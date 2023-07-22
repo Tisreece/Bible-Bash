@@ -11,6 +11,7 @@ public class Sc_PlayerController : MonoBehaviour
 
     //Camera
     public float CameraZoomSpeed = 0.5f;
+    private Camera PlayerCamera;
 
     private void Awake()
     {
@@ -18,7 +19,29 @@ public class Sc_PlayerController : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        PlayerCamera = transform.Find("DefaultCamera").gameObject.GetComponent<Camera>();
+    }
+
     private void FixedUpdate()
+    {
+        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        {
+            MoveCharacter();
+        }
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        {
+            ZoomCamera();
+        }
+    }
+
+    private void MoveCharacter()
     {
         Vector2 CurrentPosition = rbody.position;
         float HorizontalInput = Input.GetAxis("Horizontal");
@@ -28,5 +51,38 @@ public class Sc_PlayerController : MonoBehaviour
         Vector2 Movement = InputVector * MovementSpeed;
         Vector2 NewPosition = CurrentPosition + Movement * Time.fixedDeltaTime;
         rbody.MovePosition(NewPosition);
+    }
+
+    private void ZoomCamera()
+    {
+        float MaxZoom = 8f;
+        float MinZoom = 2f;
+        float CurrentZoom = PlayerCamera.orthographicSize;
+        if (Input.mouseScrollDelta.y < 0) //Zoom Out
+        {
+            float NewZoom = CurrentZoom + CameraZoomSpeed;
+            if (NewZoom > MaxZoom)
+            {
+                NewZoom = MaxZoom;
+                PlayerCamera.orthographicSize = NewZoom;
+            }
+            else
+            {;
+                PlayerCamera.orthographicSize = NewZoom;
+            }
+        }
+        if (Input.mouseScrollDelta.y > 0) // Zoom In
+        {
+            float NewZoom = CurrentZoom - CameraZoomSpeed;
+            if (NewZoom < MinZoom)
+            {
+                NewZoom = MinZoom;
+                PlayerCamera.orthographicSize = NewZoom;
+            }
+            else
+            {
+                PlayerCamera.orthographicSize = NewZoom;
+            }
+        }
     }
 }
