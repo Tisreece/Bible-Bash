@@ -39,6 +39,31 @@ public class Sc_PlayerController : MonoBehaviour
         {
             ZoomCamera();
         }
+
+        if (Input.GetButtonDown("Primary")) //Melee Attack
+        {
+            print("This would be where we do melee attacks"); //TODO
+        }
+
+        if (Input.GetButtonDown("Secondary")) //Secondary Attack
+        {
+            print("This would be where we do secondary attacks"); //TODO
+        }
+
+        if (Input.GetButtonDown("Ability1")) //Ability 1
+        {
+            print("This would be where we do Ability 1"); //TODO
+        }
+
+        if (Input.GetButtonDown("Ability2")) //Ability 2
+        {
+            print("This would be where we do Ability 2"); //TODO
+        }
+
+        if (Input.GetButtonDown("Crucify")) //Crucify
+        {
+            print("This would be where we do the Crucify combo ability"); //TODO
+        }
     }
 
     private void MoveCharacter()
