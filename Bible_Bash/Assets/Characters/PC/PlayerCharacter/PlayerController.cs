@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sc_PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     //Character Movement
@@ -13,6 +13,9 @@ public class Sc_PlayerController : MonoBehaviour
     public float CameraZoomSpeed = 0.5f;
     private Camera PlayerCamera;
 
+    //Ability Manager
+    private AbilityManager AbilityManager;
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -22,6 +25,7 @@ public class Sc_PlayerController : MonoBehaviour
     private void Start()
     {
         PlayerCamera = transform.Find("DefaultCamera").gameObject.GetComponent<Camera>();
+        AbilityManager = transform.GetComponent<AbilityManager>();
     }
 
     private void FixedUpdate()
@@ -47,22 +51,22 @@ public class Sc_PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Secondary")) //Secondary Attack
         {
-            print("This would be where we do secondary attacks"); //TODO
+            AbilityManager.UseSecondary();
         }
 
         if (Input.GetButtonDown("Ability1")) //Ability 1
         {
-            print("This would be where we do Ability 1"); //TODO
+            AbilityManager.UseAbility1();
         }
 
         if (Input.GetButtonDown("Ability2")) //Ability 2
         {
-            print("This would be where we do Ability 2"); //TODO
+            AbilityManager.UseAbility2();
         }
 
         if (Input.GetButtonDown("Crucify")) //Crucify
         {
-            print("This would be where we do the Crucify combo ability"); //TODO
+            AbilityManager.UseCrucify();
         }
     }
 

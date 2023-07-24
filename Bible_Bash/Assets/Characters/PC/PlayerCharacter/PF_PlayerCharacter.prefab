@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6506932568404465616}
   - component: {fileID: 2570583647434890712}
   - component: {fileID: 7389433343771733733}
+  - component: {fileID: 7252028803904225273}
   m_Layer: 0
   m_Name: PF_PlayerCharacter
   m_TagString: Player
@@ -119,6 +120,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 5
+  CameraZoomSpeed: 0.5
+--- !u!114 &7252028803904225273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741952764793579858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dbd4eac8ef88249a4e0d98495e2fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6031727113283058018
 GameObject:
   m_ObjectHideFlags: 0
