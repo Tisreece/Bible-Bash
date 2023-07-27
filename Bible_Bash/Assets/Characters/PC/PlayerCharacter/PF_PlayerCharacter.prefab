@@ -133,6 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22dbd4eac8ef88249a4e0d98495e2fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SecondarySlot: 0
+  Ability1Slot: 1
+  Ability2Slot: 2
+  CrucifixionSlot: 0
+  AL: {fileID: 0}
 --- !u!1 &6031727113283058018
 GameObject:
   m_ObjectHideFlags: 0
