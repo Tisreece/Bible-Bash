@@ -25,7 +25,8 @@ public class AbilityManager : MonoBehaviour
     void Start()
     {
         //We need to equip the abilities to the player
-        EquipAbility1();
+        Ability1 = EquipAbility(Ability1Slot, Ability1);
+        Ability2 = EquipAbility(Ability2Slot, Ability2);
     }
 
     // Update is called once per frame
@@ -34,24 +35,32 @@ public class AbilityManager : MonoBehaviour
         
     }
 
-    public void EquipAbility1()
+    public GameObject EquipAbility(AbilityNames NewAbility, GameObject AbilityComponent)
     {
         AbilityMaster Ability1ToEquip = null;
-        if (Ability1Slot != AbilityNames.None)
+        if (NewAbility != AbilityNames.None)
         {
-            Ability1ToEquip = FindAbility(Ability1Slot);
+            Ability1ToEquip = FindAbility(NewAbility);
         }
-        if (Ability1ToEquip != null)
+        if (Ability1ToEquip == AbilityComponent)
         {
-            Ability1 = Instantiate(Ability1ToEquip.gameObject);
-            Ability1.transform.SetParent(transform);
+            return AbilityComponent;
         }
-        
-    }
-
-    public void EquipAbility2()
-    {
-
+        else
+        {
+            if (AbilityComponent != null) //Destroy any component already occupying that slot before adding a new one
+            {
+                Destroy(AbilityComponent);
+            }
+            if (Ability1ToEquip != null)
+            {
+                AbilityComponent = Instantiate(Ability1ToEquip.gameObject);
+                AbilityComponent.transform.SetParent(transform);
+                string NewName = NewAbility.ToString();
+                AbilityComponent.name = NewName;
+            }
+            return AbilityComponent;
+        }
     }
 
     public void UseSecondary()

@@ -7,7 +7,7 @@ public class BibleToss : AbilityMaster
     // Start is called before the first frame update
     void Start()
     {
-        print("Hello");
+        Debug.Log("BibleToss ability instantiated");
     }
 
     // Update is called once per frame
