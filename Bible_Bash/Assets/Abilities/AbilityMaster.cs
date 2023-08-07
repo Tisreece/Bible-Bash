@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AbilityMaster : MonoBehaviour
 {
+    public GameObject PlayerCharacter;
     // Start is called before the first frame update
     void Start()
     {

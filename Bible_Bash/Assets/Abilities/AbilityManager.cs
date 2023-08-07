@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
-
+    public GameObject PlayerCharacter;
     //All abilities as public
     public AbilityNames SecondarySlot;
     public AbilityNames Ability1Slot;
@@ -27,6 +27,7 @@ public class AbilityManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerCharacter = transform.gameObject;
         //We need to equip the abilities to the player
         EquipAbility(Ability1Slot, Ability1, out Ability1, out Ability1Script);
         EquipAbility(Ability2Slot, Ability2, out Ability2, out Ability2Script);
@@ -40,12 +41,13 @@ public class AbilityManager : MonoBehaviour
 
     public void EquipAbility(AbilityNames NewAbility, GameObject AbilityObject, out GameObject Ability, out AbilityMaster AbilityComponent)
     {
+        //TODO Currently there is nothing to say what to do if the AbilityName is set to None
         AbilityMaster Ability1ToEquip = null;
         if (NewAbility != AbilityNames.None)
         {
             Ability1ToEquip = FindAbility(NewAbility);
         }
-        if (Ability1ToEquip == AbilityObject)
+        if (Ability1ToEquip == AbilityObject) //If the ability to equip is the same as what is already there it will do nothing
         {
             Ability = AbilityObject;
             AbilityComponent = Ability.GetComponent<AbilityMaster>();
@@ -66,6 +68,7 @@ public class AbilityManager : MonoBehaviour
             }
             Ability = AbilityObject;
             AbilityComponent = Ability.GetComponent<AbilityMaster>();
+            AbilityComponent.PlayerCharacter = PlayerCharacter; //We set the PlayerCharacter gameobject in the ability
             return;
         }
     }

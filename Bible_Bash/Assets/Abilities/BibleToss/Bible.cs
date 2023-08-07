@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Bible : MonoBehaviour
 {
+    public float Speed = 15f;
+    public Rigidbody2D rb;
+
+    [HideInInspector]public Vector2 TargetDirection;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +18,11 @@ public class Bible : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Throw()
+    {
+        TargetDirection.Normalize();
+        rb.velocity = TargetDirection * Speed;
     }
 }
