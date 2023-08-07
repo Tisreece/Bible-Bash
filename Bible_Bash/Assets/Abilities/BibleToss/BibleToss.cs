@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BibleToss : AbilityMaster
 {
+
+    [SerializeField] private Bible BibleToThrow;
+    private GameObject BibleThrown;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,11 @@ public class BibleToss : AbilityMaster
     void Update()
     {
         
+    }
+
+    public override void Activate()
+    {
+        Debug.Log("BibleTossActivated");
+        BibleThrown = Instantiate(BibleToThrow.gameObject);
     }
 }

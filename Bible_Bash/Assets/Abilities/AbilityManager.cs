@@ -21,12 +21,15 @@ public class AbilityManager : MonoBehaviour
     private GameObject Ability2;
     private GameObject Crucifixion;
 
+    private AbilityMaster Ability1Script;
+    private AbilityMaster Ability2Script;
+
     // Start is called before the first frame update
     void Start()
     {
         //We need to equip the abilities to the player
-        Ability1 = EquipAbility(Ability1Slot, Ability1);
-        Ability2 = EquipAbility(Ability2Slot, Ability2);
+        EquipAbility(Ability1Slot, Ability1, out Ability1, out Ability1Script);
+        EquipAbility(Ability2Slot, Ability2, out Ability2, out Ability2Script);
     }
 
     // Update is called once per frame
@@ -35,31 +38,35 @@ public class AbilityManager : MonoBehaviour
         
     }
 
-    public GameObject EquipAbility(AbilityNames NewAbility, GameObject AbilityComponent)
+    public void EquipAbility(AbilityNames NewAbility, GameObject AbilityObject, out GameObject Ability, out AbilityMaster AbilityComponent)
     {
         AbilityMaster Ability1ToEquip = null;
         if (NewAbility != AbilityNames.None)
         {
             Ability1ToEquip = FindAbility(NewAbility);
         }
-        if (Ability1ToEquip == AbilityComponent)
+        if (Ability1ToEquip == AbilityObject)
         {
-            return AbilityComponent;
+            Ability = AbilityObject;
+            AbilityComponent = Ability.GetComponent<AbilityMaster>();
+            return;
         }
         else
         {
-            if (AbilityComponent != null) //Destroy any component already occupying that slot before adding a new one
+            if (AbilityObject != null) //Destroy any component already occupying that slot before adding a new one
             {
-                Destroy(AbilityComponent);
+                Destroy(AbilityObject);
             }
             if (Ability1ToEquip != null)
             {
-                AbilityComponent = Instantiate(Ability1ToEquip.gameObject);
-                AbilityComponent.transform.SetParent(transform);
+                AbilityObject = Instantiate(Ability1ToEquip.gameObject);
+                AbilityObject.transform.SetParent(transform);
                 string NewName = NewAbility.ToString();
-                AbilityComponent.name = NewName;
+                AbilityObject.name = NewName;
             }
-            return AbilityComponent;
+            Ability = AbilityObject;
+            AbilityComponent = Ability.GetComponent<AbilityMaster>();
+            return;
         }
     }
 
@@ -70,7 +77,7 @@ public class AbilityManager : MonoBehaviour
 
     public void UseAbility1()
     {
-        print("This would be where we do Ability 1"); //TODO
+        Ability1Script.Activate();
     }
 
     public void UseAbility2()
