@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2741952764793579858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8505745020007108279}
   m_Father: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.990566, g: 0.9127555, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c84f157c5d646b849a1c2e9519f2e9e7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,11 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22dbd4eac8ef88249a4e0d98495e2fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCharacter: {fileID: 0}
   SecondarySlot: 0
   Ability1Slot: 1
   Ability2Slot: 2
   CrucifixionSlot: 0
-  AL: {fileID: 0}
+  AbilityData: {fileID: 0}
 --- !u!1 &6031727113283058018
 GameObject:
   m_ObjectHideFlags: 0
