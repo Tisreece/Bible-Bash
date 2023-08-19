@@ -27,10 +27,18 @@ public class BibleToss : AbilityMaster
         Debug.Log("BibleTossActivated");
         TargetDirection = FindDirection();
 
-        BibleThrown = Instantiate(BibleToThrow.gameObject, PlayerCharacter.transform.position, PlayerCharacter.transform.rotation);
+        Vector2 StartingPosition = PlayerCharacter.transform.position; //This may be overengineering it slightly, I think we could just set the starting position in the bible script itself
+        BibleThrown = Instantiate(BibleToThrow.gameObject, StartingPosition, PlayerCharacter.transform.rotation);
         BibleScript = BibleThrown.GetComponent<Bible>();
         BibleScript.TargetDirection = TargetDirection;
-        BibleScript.Throw();
+        SetBibleStats(BibleScript, StartingPosition);
+        BibleScript.Throw(Stat.Speed);
+    }
+    private void SetBibleStats(Bible BibleThrown, Vector2 StartingPosition)
+    {
+        BibleThrown.Damage = Stat.Damage;
+        BibleThrown.Range = Stat.Range;
+        BibleThrown.StartingPosition = StartingPosition;
     }
 
     private Vector2 FindDirection()

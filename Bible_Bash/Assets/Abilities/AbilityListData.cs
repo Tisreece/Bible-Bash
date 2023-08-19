@@ -7,4 +7,5 @@ public class AbilityListData
 {
     public AbilityNames AbilityName;
     public AbilityMaster AbilityType;
+    public AbilityStats StatType;
 }

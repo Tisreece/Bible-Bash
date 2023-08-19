@@ -4,25 +4,64 @@ using UnityEngine;
 
 public class Bible : MonoBehaviour
 {
-    public float Speed = 15f;
-    public Rigidbody2D rb;
+    [HideInInspector] public float Damage;
+    [HideInInspector] public Vector2 TargetDirection;
 
-    [HideInInspector]public Vector2 TargetDirection;
+    public Rigidbody2D rb;
+    private bool IsMoving;
+
+    //All variable relating to calculating the distance to travel
+    [HideInInspector] public float Range;
+    [HideInInspector] public Vector2 StartingPosition;
+    private Vector2 LastPosition;
+    private Vector2 Displacement;
+    private float TotalDistance;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Thrown");
+        Debug.Log("Bible Created");
+        LastPosition = StartingPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (IsMoving == true)
+        {
+            CalculateDistance();
+            if (TotalDistance >= Range)
+            {
+                Landed();
+            }
+        }
     }
 
-    public void Throw()
+    private void CalculateDistance()
     {
+        if (LastPosition == null)
+        {
+            LastPosition = StartingPosition;
+        }
+        Vector2 CurrentPosition = transform.position;
+        Displacement = CurrentPosition - LastPosition;
+        float DistanceThisFrame = Displacement.magnitude;
+        TotalDistance = DistanceThisFrame + TotalDistance;
+        LastPosition = CurrentPosition;
+    }
+
+    private void Landed()
+    {
+        Debug.Log("BibleLanded");
+        rb.velocity = new Vector2(0,0);
+        IsMoving = false;
+    }
+
+    public void Throw(float Speed)
+    {
+        Debug.Log("Bible Thrown");
         TargetDirection.Normalize();
         rb.velocity = TargetDirection * Speed;
+        IsMoving = true;
     }
 }

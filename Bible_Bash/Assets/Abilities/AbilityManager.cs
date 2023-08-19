@@ -42,12 +42,17 @@ public class AbilityManager : MonoBehaviour
     public void EquipAbility(AbilityNames NewAbility, GameObject AbilityObject, out GameObject Ability, out AbilityMaster AbilityComponent)
     {
         //TODO Currently there is nothing to say what to do if the AbilityName is set to None
-        AbilityMaster Ability1ToEquip = null;
+        //NewAbility is the String name of the new ability to equip that it will find in the Data Table
+        //AbilityObject is the slot the GameObject will occupy
+        //Ability is the new Ability Gameobject that will be assigned to the slot
+        //AbilityComponent is a reference to the script itself
+        AbilityMaster AbilityToEquip = null;
+        AbilityStats AbilityStatToEquip = null;
         if (NewAbility != AbilityNames.None)
         {
-            Ability1ToEquip = FindAbility(NewAbility);
+            FindAbility(NewAbility, out AbilityToEquip, out AbilityStatToEquip);
         }
-        if (Ability1ToEquip == AbilityObject) //If the ability to equip is the same as what is already there it will do nothing
+        if (AbilityToEquip == AbilityObject) //If the ability to equip is the same as what is already there it will do nothing
         {
             Ability = AbilityObject;
             AbilityComponent = Ability.GetComponent<AbilityMaster>();
@@ -59,9 +64,9 @@ public class AbilityManager : MonoBehaviour
             {
                 Destroy(AbilityObject);
             }
-            if (Ability1ToEquip != null)
+            if (AbilityToEquip != null) //Add the component, attach it to the player then rename it
             {
-                AbilityObject = Instantiate(Ability1ToEquip.gameObject);
+                AbilityObject = Instantiate(AbilityToEquip.gameObject);
                 AbilityObject.transform.SetParent(transform);
                 string NewName = NewAbility.ToString();
                 AbilityObject.name = NewName;
@@ -69,6 +74,7 @@ public class AbilityManager : MonoBehaviour
             Ability = AbilityObject;
             AbilityComponent = Ability.GetComponent<AbilityMaster>();
             AbilityComponent.PlayerCharacter = PlayerCharacter; //We set the PlayerCharacter gameobject in the ability
+            AbilityComponent.Stat = AbilityStatToEquip;
             return;
         }
     }
@@ -94,10 +100,11 @@ public class AbilityManager : MonoBehaviour
     }
 
     //This will be used to find the row in the Ability Table when applying abilities
-    public AbilityMaster FindAbility(AbilityNames NameOfAbility)
+    public void FindAbility(AbilityNames NameOfAbility, out AbilityMaster Ability, out AbilityStats AbilityStat)
     {
         AbilityListData FoundRow = null;
-        AbilityMaster Ability = null;
+        Ability = null;
+        AbilityStat = null;
 
         foreach (var row in AbilityData.ListofAbilities)
         {
@@ -111,8 +118,8 @@ public class AbilityManager : MonoBehaviour
         if (FoundRow != null)
         {
             Ability = FoundRow.AbilityType;
+            AbilityStat = FoundRow.StatType;
         }
-
-        return Ability;
+        return;
     }
 }

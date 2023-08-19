@@ -15,5 +15,7 @@ MonoBehaviour:
   ListofAbilities:
   - AbilityName: 1
     AbilityType: {fileID: 4828977798580952246, guid: 2624f78517efac64796a7a31de1dc473, type: 3}
+    StatType: {fileID: 11400000, guid: 665ab1f761f0ceb4fbd67a57a7bba11c, type: 2}
   - AbilityName: 2
     AbilityType: {fileID: -2615010329587908319, guid: 0740b47417ced694581cbd9f642cbfd8, type: 3}
+    StatType: {fileID: 11400000, guid: 3ae425b210c8f2c4cbd9b75ee1d4ea00, type: 2}
