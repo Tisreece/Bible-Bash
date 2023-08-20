@@ -138,7 +138,7 @@ MonoBehaviour:
   Ability1Slot: 1
   Ability2Slot: 2
   CrucifixionSlot: 0
-  AbilityData: {fileID: 0}
+  AbilityData: {fileID: 11400000, guid: fb7af925eff7a4742b502c6dc36648a3, type: 2}
 --- !u!1 &6031727113283058018
 GameObject:
   m_ObjectHideFlags: 0

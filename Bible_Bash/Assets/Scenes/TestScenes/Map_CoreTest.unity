@@ -708,9 +708,5 @@ PrefabInstance:
       propertyPath: Ability2
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7252028803904225273, guid: 05bccb65c40dedf40a9c3246973dc5f2, type: 3}
-      propertyPath: AbilityData
-      value: 
-      objectReference: {fileID: 11400000, guid: fb7af925eff7a4742b502c6dc36648a3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05bccb65c40dedf40a9c3246973dc5f2, type: 3}
