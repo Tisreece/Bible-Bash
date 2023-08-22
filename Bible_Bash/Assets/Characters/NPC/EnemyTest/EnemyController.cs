@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     //Character Movement
     public float MovementSpeed = 5f;
     Rigidbody2D rbody;
+    public Health Health;
     
     // Start is called before the first frame update
     void Start()

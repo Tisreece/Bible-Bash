@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 5408384210735594299}
   - component: {fileID: 5113952740707470647}
   - component: {fileID: 4764852335479690171}
+  - component: {fileID: 7052334917047574604}
+  - component: {fileID: 1193210957730900215}
   m_Layer: 0
   m_Name: PF_EnemyTest
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,3 +133,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5707477, y: 0.5585687}
   m_EdgeRadius: 0
+--- !u!114 &7052334917047574604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657414900018207594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c41fc97997b7c6546b3e9dfd475193e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 5
+  Health: {fileID: 1193210957730900215}
+--- !u!114 &1193210957730900215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657414900018207594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ed7f4ba65e2a84a85e0e5bbdfd0c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100

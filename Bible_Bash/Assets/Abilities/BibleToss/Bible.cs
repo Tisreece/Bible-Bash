@@ -66,4 +66,21 @@ public class Bible : MonoBehaviour
         rb.velocity = TargetDirection * Speed;
         IsMoving = true;
     }
+    
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        // Use tags to differentiate between enemies and static objects
+        // Will want to stop the bible if colliding with a wall etc.
+        
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("Bible collided with enemy");
+            EnemyController Enemy = other.GetComponent<EnemyController>();
+            if (Enemy != null)
+            {
+                // deal damage based on Damage stat
+                Enemy.Health.TakeDamage(Damage);
+            }
+        }
+    }
 }
