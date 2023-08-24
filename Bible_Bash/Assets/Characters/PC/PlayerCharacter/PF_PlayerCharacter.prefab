@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7389433343771733733}
   - component: {fileID: 7252028803904225273}
   - component: {fileID: 2188570151312652571}
+  - component: {fileID: 1466680650460882808}
   m_Layer: 0
   m_Name: PF_PlayerCharacter
   m_TagString: Player
@@ -157,7 +158,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.8, y: 3.978}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -166,6 +167,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1466680650460882808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741952764793579858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ddca2d0af9cdb44ba454fc313a4ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Characters: 00000000
+  Abilities: 
 --- !u!1 &6031727113283058018
 GameObject:
   m_ObjectHideFlags: 0

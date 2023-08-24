@@ -47,6 +47,7 @@ public class BibleToss : AbilityMaster
         BibleThrown.Damage = Stat.Damage;
         BibleThrown.Range = Stat.Range;
         BibleThrown.StartingPosition = StartingPosition;
+        BibleThrown.BibleTossOrigin = this;
     }
 
     private Vector2 FindDirection()
@@ -67,6 +68,11 @@ public class BibleToss : AbilityMaster
         BibleScript = BibleThrown.GetComponent<Bible>();
         BibleScript.TargetDirection = TargetDirection;
         SetBibleStats(BibleScript, StartingPosition);
+    }
+
+    public void PickupBible()
+    {
+        IsEquipped = true;
     }
 
     public override bool CheckCanActivate()

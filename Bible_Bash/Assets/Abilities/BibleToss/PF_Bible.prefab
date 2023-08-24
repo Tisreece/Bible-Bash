@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8082190461260766342}
   - component: {fileID: 2770345686239582481}
   - component: {fileID: 5338197170835823004}
+  - component: {fileID: 3096916598975577605}
   m_Layer: 0
   m_Name: PF_Bible
   m_TagString: Untagged
@@ -151,6 +152,20 @@ MonoBehaviour:
   rb: {fileID: 8082190461260766342}
   Range: 0
   StartingPosition: {x: 0, y: 0}
+--- !u!114 &3096916598975577605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4534023025530023380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ddca2d0af9cdb44ba454fc313a4ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Characters: 
+  Abilities: 00000000
 --- !u!1 &6307768540360704512
 GameObject:
   m_ObjectHideFlags: 0

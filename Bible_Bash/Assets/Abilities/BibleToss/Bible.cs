@@ -6,6 +6,7 @@ public class Bible : MonoBehaviour
 {
     [HideInInspector] public float Damage;
     [HideInInspector] public Vector2 TargetDirection;
+    [HideInInspector] public BibleToss BibleTossOrigin;
     public SpriteRenderer DropRadiusSprite;
 
     public Rigidbody2D rb;
@@ -66,6 +67,12 @@ public class Bible : MonoBehaviour
         rb.velocity = TargetDirection * Speed;
         IsMoving = true;
     }
+
+    public void Pickup()
+    {
+        BibleTossOrigin.PickupBible();
+        Destroy(this.gameObject);
+    }
     
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -81,6 +88,11 @@ public class Bible : MonoBehaviour
                 // deal damage based on Damage stat
                 Enemy.Health.TakeDamage(Damage);
             }
+        }
+        ObjectTags ObjectTagComponent = other.GetComponent<ObjectTags>();
+        if (ObjectTagComponent.Characters.Contains(CharacterTags.Player) && IsMoving == false)
+        {
+            Pickup();
         }
     }
 }
