@@ -10,6 +10,9 @@ public class BibleToss : AbilityMaster
 
     private Vector2 TargetDirection;
 
+    //These are all the bools that will dictate whether or not the Ability can be activated
+    [HideInInspector] public bool IsEquipped = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +27,20 @@ public class BibleToss : AbilityMaster
 
     public override void Activate()
     {
-        Debug.Log("BibleTossActivated");
-        TargetDirection = FindDirection();
-
-        Vector2 StartingPosition = PlayerCharacter.transform.position; //This may be overengineering it slightly, I think we could just set the starting position in the bible script itself
-        BibleThrown = Instantiate(BibleToThrow.gameObject, StartingPosition, PlayerCharacter.transform.rotation);
-        BibleScript = BibleThrown.GetComponent<Bible>();
-        BibleScript.TargetDirection = TargetDirection;
-        SetBibleStats(BibleScript, StartingPosition);
-        BibleScript.Throw(Stat.Speed);
+        CanActivate = CheckCanActivate();
+        if (CanActivate == true)
+        {
+            Debug.Log("BibleTossActivated");
+            TargetDirection = FindDirection();
+            SpawnBible();
+            IsEquipped = false;
+            BibleScript.Throw(Stat.Speed);
+        }
+        else
+        {
+            Debug.Log("BibleTossCannotBeActivated");
+        }
+        
     }
     private void SetBibleStats(Bible BibleThrown, Vector2 StartingPosition)
     {
@@ -50,5 +58,21 @@ public class BibleToss : AbilityMaster
 
         Direction = CursorPosition - PlayerCharacter.transform.position;
         return Direction;
+    }
+
+    private void SpawnBible()
+    {
+        Vector2 StartingPosition = PlayerCharacter.transform.position; //This may be overengineering it slightly, I think we could just set the starting position in the bible script itself
+        BibleThrown = Instantiate(BibleToThrow.gameObject, StartingPosition, PlayerCharacter.transform.rotation);
+        BibleScript = BibleThrown.GetComponent<Bible>();
+        BibleScript.TargetDirection = TargetDirection;
+        SetBibleStats(BibleScript, StartingPosition);
+    }
+
+    public override bool CheckCanActivate()
+    {
+        bool CheckResult = false;
+        CheckResult = IsEquipped;
+        return CheckResult;
     }
 }
