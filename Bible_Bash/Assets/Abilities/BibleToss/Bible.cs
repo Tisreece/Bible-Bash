@@ -74,25 +74,29 @@ public class Bible : MonoBehaviour
         Destroy(this.gameObject);
     }
     
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        // Use tags to differentiate between enemies and static objects
-        // Will want to stop the bible if colliding with a wall etc.
-        
-        if (other.CompareTag("Enemy"))
+        //TODO Will want to stop the bible if colliding with a wall etc.
+
+        ObjectTags ObjectTagComponent = collider.GetComponent<ObjectTags>();
+
+        if (ObjectTagComponent != null)
         {
-            Debug.Log("Bible collided with enemy");
-            EnemyController Enemy = other.GetComponent<EnemyController>();
-            if (Enemy != null)
+            if (ObjectTagComponent.Characters.Contains(CharacterTags.Enemy))
             {
-                // deal damage based on Damage stat
-                Enemy.Health.TakeDamage(Damage);
+                Debug.Log("Bible collided with enemy");
+                EnemyController Enemy = collider.GetComponent<EnemyController>();
+                if (Enemy != null)
+                {
+                    // deal damage based on Damage stat
+                    Enemy.Health.TakeDamage(Damage);
+                }
             }
-        }
-        ObjectTags ObjectTagComponent = other.GetComponent<ObjectTags>();
-        if (ObjectTagComponent.Characters.Contains(CharacterTags.Player) && IsMoving == false)
-        {
-            Pickup();
+
+            if (ObjectTagComponent.Characters.Contains(CharacterTags.Player) && IsMoving == false)
+            {
+                Pickup();
+            }
         }
     }
 }

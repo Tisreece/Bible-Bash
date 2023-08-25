@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4764852335479690171}
   - component: {fileID: 7052334917047574604}
   - component: {fileID: 1193210957730900215}
+  - component: {fileID: 1703739397764212833}
   m_Layer: 0
   m_Name: PF_EnemyTest
   m_TagString: Enemy
@@ -160,3 +161,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
+--- !u!114 &1703739397764212833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657414900018207594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ddca2d0af9cdb44ba454fc313a4ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Characters: 01000000
+  Abilities: 
