@@ -7,7 +7,10 @@ public class Bible : MonoBehaviour
     [HideInInspector] public float Damage;
     [HideInInspector] public Vector2 TargetDirection;
     [HideInInspector] public BibleToss BibleTossOrigin;
+
+    //Inactive until dropped
     public SpriteRenderer DropRadiusSprite;
+    public CapsuleCollider2D DropRadiusCollider;
 
     public Rigidbody2D rb;
     private bool IsMoving;
@@ -58,6 +61,7 @@ public class Bible : MonoBehaviour
         rb.velocity = new Vector2(0,0);
         IsMoving = false;
         DropRadiusSprite.enabled = true;
+        DropRadiusCollider.enabled = true;
     }
 
     public void Throw(float Speed)

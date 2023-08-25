@@ -122,7 +122,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00024226308, y: -0.033233732}
+  m_Offset: {x: -0.00024223328, y: 0.0038088262}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -133,7 +133,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7056501, y: 0.9155547}
+  m_Size: {x: 0.53408456, y: 0.77908224}
   m_EdgeRadius: 0
 --- !u!114 &5338197170835823004
 MonoBehaviour:
@@ -151,6 +151,7 @@ MonoBehaviour:
   TargetDirection: {x: 0, y: 0}
   BibleTossOrigin: {fileID: 0}
   DropRadiusSprite: {fileID: 5061626039990887014}
+  DropRadiusCollider: {fileID: 7434453772128183999}
   rb: {fileID: 8082190461260766342}
   Range: 0
   StartingPosition: {x: 0, y: 0}
@@ -192,6 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1432587086614615952}
   - component: {fileID: 5061626039990887014}
+  - component: {fileID: 7434453772128183999}
   m_Layer: 0
   m_Name: DropRadius
   m_TagString: Untagged
@@ -264,3 +266,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &7434453772128183999
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307768540360704512}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.037575725, y: -0.0034229208}
+  m_Size: {x: 3.6107254, y: 1.7801238}
+  m_Direction: 1
