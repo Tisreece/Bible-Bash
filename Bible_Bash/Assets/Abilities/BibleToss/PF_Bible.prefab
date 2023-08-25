@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2770345686239582481}
   - component: {fileID: 5338197170835823004}
   - component: {fileID: 3096916598975577605}
+  - component: {fileID: 4160440656088491369}
   m_Layer: 0
   m_Name: PF_Bible
   m_TagString: Untagged
@@ -73,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1869018541
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8c8b2a7c999766547bd6afb81e378c47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   TargetDirection: {x: 0, y: 0}
+  BibleTossOrigin: {fileID: 0}
   DropRadiusSprite: {fileID: 5061626039990887014}
   rb: {fileID: 8082190461260766342}
   Range: 0
@@ -166,6 +168,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters: 
   Abilities: 00000000
+--- !u!114 &4160440656088491369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4534023025530023380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626b8c6d9e6714e4c8c403ecc8394489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpritesToSort:
+  - {fileID: 1369810675867883655}
 --- !u!1 &6307768540360704512
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,9 +250,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1716395753
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 073cdc2e4b3e3824194acec5947f25c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
