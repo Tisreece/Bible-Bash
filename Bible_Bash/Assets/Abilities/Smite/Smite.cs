@@ -8,29 +8,32 @@ public class Smite : AbilityMaster
     private GameObject SmiteZoneSpawned;
     private SmiteZone SmiteZoneScript;
     [SerializeField] private float Cooldown;
-    private float CooldownRemaining;
+    private float CooldownTimer;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Smite ability instantiated");
-        CooldownRemaining = 0.0f;
+        CooldownTimer = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!CheckCanActivate())
+        {
+            CooldownTimer -= Time.deltaTime;
+        }
     }
 
     public override void Activate()
     {
-        if (Time.time - CooldownRemaining >= Cooldown)
+        if (CheckCanActivate())
         {
             Debug.Log("Smite");
             // call spawning method
             SpawnZone();
             // start cooldown
-            CooldownRemaining = Time.time;
+            CooldownTimer = Cooldown;
         }
         else
         {
@@ -44,5 +47,19 @@ public class Smite : AbilityMaster
         // identify current mouse position
         // instantiate smiteZone
         // will need to grab the smiteZone component so that we can access it's stats?
+    }
+
+    public override bool CheckCanActivate()
+    {
+        // check that the cooldown timer is <= to 0, set to 0 and return true
+        if (CooldownTimer <= 0.0f)
+        {
+            CooldownTimer = 0.0f;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
