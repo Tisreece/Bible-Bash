@@ -91,7 +91,7 @@ public class AbilityManager : MonoBehaviour
 
     public void UseAbility2()
     {
-        print("This would be where we do Ability 2"); //TODO
+        Ability2Script.Activate();
     }
 
     public void UseCrucify()
