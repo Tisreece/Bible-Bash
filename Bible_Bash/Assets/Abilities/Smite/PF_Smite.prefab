@@ -43,3 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630c6310910b5554ab29aa4bf653da79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCharacter: {fileID: 0}
+  Stat: {fileID: 0}
+  CanActivate: 0
+  SmiteZone: {fileID: 7351492367030195993, guid: 7f874d5f1deef374081005254ade5ffc, type: 3}
+  Cooldown: 10
