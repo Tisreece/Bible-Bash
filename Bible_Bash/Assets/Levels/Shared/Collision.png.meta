@@ -14,6 +14,12 @@ TextureImporter:
   - first:
       213: 4550207301783981519
     second: Collision_3
+  - first:
+      213: -1036624066249129379
+    second: Collision_4
+  - first:
+      213: -8950629006670395992
+    second: Collision_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,7 +120,13 @@ TextureImporter:
       pivot: {x: 1, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: 15.672295}
+        - {x: -15.946892, y: -15.663235}
+        - {x: -1.037466, y: -23.34335}
+        - {x: 16, y: -32}
+        - {x: 16, y: -0.4429798}
+        - {x: 0.6047783, y: 7.281185}
       tessellationDetail: 0
       bones: []
       spriteID: 62d79b3e6467b2430800000000000000
@@ -135,7 +147,13 @@ TextureImporter:
       pivot: {x: 0, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -1.7269974, y: 7.34251}
+        - {x: -16, y: -0.22604942}
+        - {x: -16, y: -32}
+        - {x: 0.40639496, y: -23.358793}
+        - {x: 16, y: -15.695679}
+        - {x: 16, y: 16.732624}
       tessellationDetail: 0
       bones: []
       spriteID: dfd8ac6068c069bd0800000000000000
@@ -156,7 +174,10 @@ TextureImporter:
       pivot: {x: 1, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: 16.327942}
+        - {x: -16, y: -15.815807}
+        - {x: 16, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: b60d712a0e5dd24f0800000000000000
@@ -177,11 +198,62 @@ TextureImporter:
       pivot: {x: 0, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: -32}
+        - {x: 16, y: -15.647793}
+        - {x: 16, y: 16.24393}
       tessellationDetail: 0
       bones: []
       spriteID: fcd0935de65952f30800000000000000
       internalID: 4550207301783981519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 1, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: 16.571873}
+        - {x: -16, y: -15.831985}
+        - {x: 16, y: 32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d52899d67eb2d91f0800000000000000
+      internalID: -1036624066249129379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -15.916, y: 32}
+        - {x: 16, y: -15.411949}
+        - {x: 16, y: 17.227757}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a58a15475af8c380800000000000000
+      internalID: -8950629006670395992
       vertices: []
       indices: 
       edges: []
