@@ -19,12 +19,16 @@ public class Smite : AbilityMaster
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (!CheckCanActivate())
         {
             CooldownTimer -= Time.deltaTime;
         }
     }
-
     public override void Activate()
     {
         if (CheckCanActivate())
