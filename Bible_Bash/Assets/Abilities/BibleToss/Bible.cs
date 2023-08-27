@@ -101,6 +101,11 @@ public class Bible : MonoBehaviour
             {
                 Pickup();
             }
+
+            if (ObjectTagComponent.Environment.Contains(EnvironmentTags.Bounds) || ObjectTagComponent.Environment.Contains(EnvironmentTags.Blocking))
+            {
+                Landed();
+            }
         }
     }
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 50
   Speed: 30
-  Range: 7.5
+  Range: 5
   Radius: 0
