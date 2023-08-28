@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters: 
   Abilities: 00000000
+  Environment: 
 --- !u!114 &4160440656088491369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +280,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.037575725, y: -0.0034229208}
-  m_Size: {x: 3.6107254, y: 1.7801238}
+  m_Offset: {x: 0.018991591, y: 0.0021506527}
+  m_Size: {x: 1.8116047, y: 0.9066192}
   m_Direction: 1
