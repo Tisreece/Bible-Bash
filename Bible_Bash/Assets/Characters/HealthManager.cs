@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class HealthManager : MonoBehaviour
 {
 
     public float MaxHealth = 100;
-    private float CurrentHealth;
+    public float CurrentHealth = 100;
+
+    public Healthbar Healthbar;
 
     // Start is called before the first frame update
     void Start()
     {
-        CurrentHealth = MaxHealth;
     }
 
     public void TakeDamage(float amount)
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
         {
             Die();
         }
+        Healthbar.UpdateHealth(CurrentHealth, MaxHealth);
     }
 
     public void Die()

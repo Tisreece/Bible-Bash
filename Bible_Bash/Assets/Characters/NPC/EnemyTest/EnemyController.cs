@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     //Character Movement
     public float MovementSpeed = 5f;
     Rigidbody2D rbody;
-    public Health Health;
+    public HealthManager Health;
     
     // Start is called before the first frame update
     void Start()
