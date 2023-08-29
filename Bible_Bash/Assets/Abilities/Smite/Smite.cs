@@ -5,8 +5,6 @@ using UnityEngine;
 public class Smite : AbilityMaster
 {
     [SerializeField] private SmiteZone SmiteZone;
-    private GameObject SmiteZoneSpawned;
-    private SmiteZone SmiteZoneScript;
     [SerializeField] private float Cooldown;
     private float CooldownTimer;
     // Start is called before the first frame update
@@ -47,12 +45,19 @@ public class Smite : AbilityMaster
 
     void SpawnZone()
     {
-        // will need to spawn the zone on the current position of the mouse
+        // create empty reference for object
+        SmiteZone SmiteZoneInstance;
         // identify current mouse position
-        // instantiate smiteZone
-        // will need to grab the smiteZone component so that we can access it's stats?
+        Vector2 mousePosition = Input.mousePosition;
+        // Convert mouse position to world space
+        Vector2 spawnPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        // Instantiate the SmiteZone prefab at the spawn position
+        SmiteZoneInstance = Instantiate(SmiteZone.gameObject, spawnPosition, Quaternion.identity).GetComponent<SmiteZone>();
+        SetStats(SmiteZoneInstance);
+        // Call the CreateZone method on the SmiteZone component
+        SmiteZoneInstance.CreateZone();
     }
-
+    
     public override bool CheckCanActivate()
     {
         // check that the cooldown timer is <= to 0, set to 0 and return true
@@ -65,5 +70,9 @@ public class Smite : AbilityMaster
         {
             return false;
         }
+    }
+    private void SetStats(SmiteZone SmiteZone)
+    {
+        SmiteZone.Damage = Stat.Damage;
     }
 }
