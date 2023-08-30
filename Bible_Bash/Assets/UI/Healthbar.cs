@@ -23,8 +23,8 @@ public class Healthbar : MonoBehaviour
     private float DamageTakenDuration = 1.0f;
 
     //Handles Health Values
-    //private float DisplayedHealth; //Set at the end of each frame of the coroutine. This may not need to be used depending on what my solution is.
-    private float PreviousHealth; //Set at the beginning of coroutines
+    //private float DisplayedHealth; //Set at the end of each frame of the coroutine. // This is currently not being used
+    //private float PreviousHealth; //Set at the beginning of coroutines //This is currently not being used
     private float CurrentHealth; //Set when new HP is announced
 
     // Start is called before the first frame update
@@ -82,7 +82,7 @@ public class Healthbar : MonoBehaviour
     private void SetInitialHealth()
     {
         CurrentHealth = HealthManager.CurrentHealth;
-        PreviousHealth = HealthManager.CurrentHealth;
+        //PreviousHealth = HealthManager.CurrentHealth; //We may need this in the future
         //DisplayedHealth = HealthManager.CurrentHealth; //We may need this in the future
         LightHPFill = ResetFill();
         DarkHPFill = ResetFill();
