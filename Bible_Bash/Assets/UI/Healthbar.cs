@@ -13,13 +13,19 @@ public class Healthbar : MonoBehaviour
     private float DarkHPFill;
     private float LightHPFill;
 
-    //Handles the Coroutine
+    //Handles the HP Loss Coroutine
     private float HPLossDuration = 0.5f;
     private float HPLossElapsedTime = 0.0f;
+    //private bool HPLossRunning = false; //We may need this in the future
+
+    //Damage Taken Coroutine
+    private bool DamageTakenRunning = false;
+    private float DamageTakenDuration = 1.0f;
 
     //Handles Health Values
-    private float DisplayedHealth;
-    private float CurrentHealth; //I don't think this is a redundancy. This is the value the Healthbar thinks it should be before lerping has been done.
+    //private float DisplayedHealth; //Set at the end of each frame of the coroutine. This may not need to be used depending on what my solution is.
+    private float PreviousHealth; //Set at the beginning of coroutines
+    private float CurrentHealth; //Set when new HP is announced
 
     // Start is called before the first frame update
     void Start()
@@ -30,35 +36,62 @@ public class Healthbar : MonoBehaviour
     public void UpdateHealth(float NewHealth, float MaxHealth)
     {
         // TODO This will be the place where we will handle both increases and decreases in health. Currently this only handles decreases in health
-        if (NewHealth < CurrentHealth)
+        if (NewHealth < CurrentHealth) //We have taken damage
         {
-            LightHPFill = NewHealth / HealthManager.MaxHealth;
+            CurrentHealth = NewHealth;
+            LightHPFill = CurrentHealth / HealthManager.MaxHealth;
             LightHP.fillAmount = LightHPFill;
-            StartCoroutine(HPLoss(DarkHPFill, NewHealth));
+            if (DamageTakenRunning == true)
+            {
+                StopCoroutine(DamageTakenTimer());
+            }
+            StartCoroutine(DamageTakenTimer());
         }
+    }
+
+    private IEnumerator DamageTakenTimer()
+    {
+        DamageTakenRunning = true;
+        yield return new WaitForSeconds(DamageTakenDuration);
+        DamageTakenRunning = false;
+        StartCoroutine(HPLoss(DarkHPFill, CurrentHealth));
     }
 
     private IEnumerator HPLoss(float InitialFill, float TargetHealth)
     {
+        HPLossElapsedTime = 0.0f;
+        //HPLossRunning = true; //Keep pls
+
         while (HPLossElapsedTime < HPLossDuration)
         {
             HPLossElapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(HPLossElapsedTime / HPLossDuration);
             float TargetFill = TargetHealth / HealthManager.MaxHealth;
-            DarkHP.fillAmount = Mathf.Lerp(InitialFill, TargetFill, t); //It will be best to lerp the health then update the UI. This way we can set the currently displayed health for future HP changes
+            DarkHP.fillAmount = Mathf.Lerp(InitialFill, TargetFill, t); //It may be best to lerp the health then update the UI. This way we can set the currently displayed health for future HP changes
+            DarkHPFill = DarkHP.fillAmount;
             yield return null;
         }
 
-        CurrentHealth = TargetHealth;
+        if (DamageTakenRunning == false) //We don't want to set the fill amount to current health if there is already a health update pending
+        {
+            DarkHPFill = ResetFill();
+        }
+        //HPLossRunning = false; //Keep pls
     }
 
     private void SetInitialHealth()
     {
-        LightHPFill = HealthManager.CurrentHealth / HealthManager.MaxHealth;
-        DarkHPFill = HealthManager.CurrentHealth / HealthManager.MaxHealth;
+        CurrentHealth = HealthManager.CurrentHealth;
+        PreviousHealth = HealthManager.CurrentHealth;
+        //DisplayedHealth = HealthManager.CurrentHealth; //We may need this in the future
+        LightHPFill = ResetFill();
+        DarkHPFill = ResetFill();
         LightHP.fillAmount = LightHPFill;
         DarkHP.fillAmount = DarkHPFill;
-        CurrentHealth = HealthManager.CurrentHealth;
-        DisplayedHealth = HealthManager.CurrentHealth;
+    }
+
+    private float ResetFill()
+    {
+        return CurrentHealth / HealthManager.MaxHealth;
     }
 }

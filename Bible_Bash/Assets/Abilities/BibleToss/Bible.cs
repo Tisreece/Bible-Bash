@@ -25,7 +25,6 @@ public class Bible : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Bible Created");
         LastPosition = StartingPosition;
     }
 
@@ -57,7 +56,6 @@ public class Bible : MonoBehaviour
 
     private void Landed()
     {
-        Debug.Log("BibleLanded");
         rb.velocity = new Vector2(0,0);
         IsMoving = false;
         DropRadiusSprite.enabled = true;
@@ -66,7 +64,6 @@ public class Bible : MonoBehaviour
 
     public void Throw(float Speed)
     {
-        Debug.Log("Bible Thrown");
         TargetDirection.Normalize();
         rb.velocity = TargetDirection * Speed;
         IsMoving = true;
@@ -88,7 +85,6 @@ public class Bible : MonoBehaviour
         {
             if (ObjectTagComponent.Characters.Contains(CharacterTags.Enemy))
             {
-                Debug.Log("Bible collided with enemy");
                 EnemyController Enemy = collider.GetComponent<EnemyController>();
                 if (Enemy != null)
                 {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881330834780e75448daef509a17e11e, type: 3}
   m_Name: BibleTossStats
   m_EditorClassIdentifier: 
-  Damage: 50
+  Damage: 25
   Speed: 30
   Range: 5
   Radius: 0

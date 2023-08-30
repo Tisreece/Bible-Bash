@@ -16,7 +16,6 @@ public class SmiteZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Smite Created");
     }
 
     // Update is called once per frame
@@ -45,7 +44,6 @@ public class SmiteZone : MonoBehaviour
     public void CreateZone()
     {
         // turn on sprite and collider
-        Debug.Log("Test");
         RadiusSprite.enabled = true;
         RadiusCollider.enabled = true;
         StartCoroutine(ActivateZone());
