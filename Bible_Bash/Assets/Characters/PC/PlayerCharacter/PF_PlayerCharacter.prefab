@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7252028803904225273}
   - component: {fileID: 1466680650460882808}
   - component: {fileID: 7545731331255620149}
+  - component: {fileID: 5457206384513189618}
   m_Layer: 0
   m_Name: PF_PlayerCharacter
   m_TagString: Player
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869018541
-  m_SortingLayer: 3
+  m_SortingLayer: -1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c84f157c5d646b849a1c2e9519f2e9e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -169,6 +170,14 @@ MonoBehaviour:
   Ability2Slot: 2
   CrucifixionSlot: 0
   AbilityData: {fileID: 11400000, guid: fb7af925eff7a4742b502c6dc36648a3, type: 2}
+  Secondary: {fileID: 0}
+  Ability1: {fileID: 0}
+  Ability2: {fileID: 0}
+  Crucifixion: {fileID: 0}
+  SecondaryScript: {fileID: 0}
+  Ability1Script: {fileID: 0}
+  Ability2Script: {fileID: 0}
+  HUDManager: {fileID: 5457206384513189618}
 --- !u!114 &1466680650460882808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +207,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpritesToSort:
   - {fileID: 6506932568404465616}
+--- !u!114 &5457206384513189618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741952764793579858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4570654e5bd03604faa48c3d81b9a803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityBarToDraw: {fileID: 3746799381937941640, guid: b6047bf6411fd3e40a36ed5cfab4fa04, type: 3}
+  AbilityManager: {fileID: 7252028803904225273}
+  AbilityBar: {fileID: 0}
 --- !u!1 &3841234161222223841
 GameObject:
   m_ObjectHideFlags: 0

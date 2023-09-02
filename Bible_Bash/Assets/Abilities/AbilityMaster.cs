@@ -6,7 +6,10 @@ public class AbilityMaster : MonoBehaviour
 {
     public GameObject PlayerCharacter;
     public AbilityStats Stat;
-    public bool CanActivate;
+    [HideInInspector] public bool CanActivate;
+
+    public Sprite AbilityIcon;
+
     // Start is called before the first frame update
     void Start()
     {

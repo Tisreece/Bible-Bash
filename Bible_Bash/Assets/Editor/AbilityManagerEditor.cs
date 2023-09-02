@@ -34,7 +34,8 @@ class AbilityManagerEditor : Editor
             if (ShowMisc)
             {
                 EditorGUI.indentLevel++;
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("AbilityData"));
+                EditorGUILayout.ObjectField(serializedObject.FindProperty("AbilityData"));
+                EditorGUILayout.ObjectField(serializedObject.FindProperty("HUDManager"));
                 EditorGUI.indentLevel--;
             }
             EditorGUI.indentLevel--;

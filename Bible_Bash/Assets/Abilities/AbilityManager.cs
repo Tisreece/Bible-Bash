@@ -16,13 +16,16 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] private AbilityList AbilityData;
 
     //Abilities Equipped
-    private GameObject Secondary;
-    private GameObject Ability1;
-    private GameObject Ability2;
-    private GameObject Crucifixion;
+    [HideInInspector] public GameObject Secondary;
+    [HideInInspector] public GameObject Ability1;
+    [HideInInspector] public GameObject Ability2;
+    [HideInInspector] public GameObject Crucifixion;
 
-    private AbilityMaster Ability1Script;
-    private AbilityMaster Ability2Script;
+    [HideInInspector] public AbilityMaster SecondaryScript;
+    [HideInInspector] public AbilityMaster Ability1Script;
+    [HideInInspector] public AbilityMaster Ability2Script;
+
+    public HUDManager HUDManager;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,8 @@ public class AbilityManager : MonoBehaviour
         //We need to equip the abilities to the player
         EquipAbility(Ability1Slot, Ability1, out Ability1, out Ability1Script);
         EquipAbility(Ability2Slot, Ability2, out Ability2, out Ability2Script);
+
+        TellCreateHUD();
     }
 
     // Update is called once per frame
@@ -121,5 +126,34 @@ public class AbilityManager : MonoBehaviour
             AbilityStat = FoundRow.StatType;
         }
         return;
+    }
+
+    private void TellCreateHUD()
+    {
+        Sprite Ability1Icon = null;
+        Sprite Ability2Icon = null;
+        Sprite Ability3Icon = null;
+        if (SecondaryScript != null)
+        {
+            if (SecondaryScript.AbilityIcon != null)
+            {
+                Ability1Icon = SecondaryScript.AbilityIcon;
+            }
+        }
+        if (Ability1Script != null)
+        {
+            if (Ability1Script.AbilityIcon != null)
+            {
+                Ability2Icon = Ability1Script.AbilityIcon;
+            }
+        }
+        if (Ability2Script != null)
+        {
+            if (Ability2Script.AbilityIcon != null)
+            {
+                Ability3Icon = Ability2Script.AbilityIcon;
+            }
+        }
+        HUDManager.AbilityBarSetup(Ability1Icon, Ability2Icon, Ability3Icon);
     }
 }
