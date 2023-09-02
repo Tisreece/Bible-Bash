@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class AbilityMaster : MonoBehaviour
 {
+    //These are set on creation
     public GameObject PlayerCharacter;
     public AbilityStats Stat;
+    [HideInInspector] public HUDManager HUDManager;
+    [HideInInspector] public int AbilitySlotIndex;
+
     [HideInInspector] public bool CanActivate;
+    
 
     public Sprite AbilityIcon;
 
@@ -31,5 +36,11 @@ public class AbilityMaster : MonoBehaviour
     {
         CanActivate = true;
         return CanActivate; //This is placeholder and should be overwritten in the ability script
+    }
+
+    public virtual void UpdateIconHUD()
+    {
+        bool Activatable = CheckCanActivate();
+        HUDManager.UpdateAbilityIcon(AbilitySlotIndex, Activatable);
     }
 }

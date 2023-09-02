@@ -32,8 +32,8 @@ public class AbilityManager : MonoBehaviour
     {
         PlayerCharacter = transform.gameObject;
         //We need to equip the abilities to the player
-        EquipAbility(Ability1Slot, Ability1, out Ability1, out Ability1Script);
-        EquipAbility(Ability2Slot, Ability2, out Ability2, out Ability2Script);
+        EquipAbility(Ability1Slot, Ability1, 2, out Ability1, out Ability1Script);
+        EquipAbility(Ability2Slot, Ability2, 3, out Ability2, out Ability2Script);
 
         TellCreateHUD();
     }
@@ -44,7 +44,7 @@ public class AbilityManager : MonoBehaviour
         
     }
 
-    public void EquipAbility(AbilityNames NewAbility, GameObject AbilityObject, out GameObject Ability, out AbilityMaster AbilityComponent)
+    public void EquipAbility(AbilityNames NewAbility, GameObject AbilityObject, int AbilitySlotIndex, out GameObject Ability, out AbilityMaster AbilityComponent)
     {
         //TODO Currently there is nothing to say what to do if the AbilityName is set to None
         //NewAbility is the String name of the new ability to equip that it will find in the Data Table
@@ -80,6 +80,8 @@ public class AbilityManager : MonoBehaviour
             AbilityComponent = Ability.GetComponent<AbilityMaster>();
             AbilityComponent.PlayerCharacter = PlayerCharacter; //We set the PlayerCharacter gameobject in the ability
             AbilityComponent.Stat = AbilityStatToEquip;
+            AbilityComponent.HUDManager = HUDManager;
+            AbilityComponent.AbilitySlotIndex = AbilitySlotIndex;
             return;
         }
     }

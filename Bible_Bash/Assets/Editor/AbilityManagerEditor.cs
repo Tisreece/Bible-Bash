@@ -40,5 +40,7 @@ class AbilityManagerEditor : Editor
             }
             EditorGUI.indentLevel--;
         }
+
+        serializedObject.ApplyModifiedProperties();
     }
 }

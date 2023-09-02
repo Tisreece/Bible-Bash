@@ -35,6 +35,7 @@ public class BibleToss : AbilityMaster
             SpawnBible();
             IsEquipped = false;
             BibleScript.Throw(Stat.Speed);
+            UpdateIconHUD();
         }
         else
         {
@@ -73,6 +74,7 @@ public class BibleToss : AbilityMaster
     public void PickupBible()
     {
         IsEquipped = true;
+        UpdateIconHUD();
     }
 
     public override bool CheckCanActivate()

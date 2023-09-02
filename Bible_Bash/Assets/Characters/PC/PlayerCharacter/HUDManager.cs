@@ -23,6 +23,7 @@ public class HUDManager : MonoBehaviour
         
     }
 
+    //Relates to the Ability Bar
     public void AbilityBarSetup(Sprite A1, Sprite A2, Sprite A3)
     {
         AbilityBarCanvas = Instantiate(AbilityBarToDraw);
@@ -38,6 +39,32 @@ public class HUDManager : MonoBehaviour
         if (A3 != null)
         {
             AbilityBarScript.AbilityImage3.sprite = A3;
+        }
+    }
+
+    public void UpdateAbilityIcon(int AbilitySlot, bool CanActivate)
+    {
+        if (AbilitySlot == 1)
+        {
+
+        }
+
+        if (AbilitySlot == 2)
+        {
+            if (CanActivate == true)
+            {
+                AbilityBarScript.Ability2Overlay.enabled = false;
+            }
+
+            else
+            {
+                AbilityBarScript.Ability2Overlay.enabled = true;
+            }
+        }
+
+        if (AbilitySlot == 3)
+        {
+
         }
     }
 }
