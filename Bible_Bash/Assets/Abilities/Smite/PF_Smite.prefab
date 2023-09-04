@@ -46,7 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCharacter: {fileID: 0}
   Stat: {fileID: 0}
+  HUDManager: {fileID: 0}
+  AbilitySlotIndex: 0
   CanActivate: 0
   AbilityIcon: {fileID: 21300000, guid: bc875486b4bd7b4489275c9eea8d5636, type: 3}
+  UsesCooldown: 1
   SmiteZone: {fileID: 7351492367030195993, guid: 7f874d5f1deef374081005254ade5ffc, type: 3}
   Cooldown: 2

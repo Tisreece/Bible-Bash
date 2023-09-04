@@ -14,6 +14,7 @@ public class AbilityMaster : MonoBehaviour
     
 
     public Sprite AbilityIcon;
+    public bool UsesCooldown;
 
     // Start is called before the first frame update
     void Start()

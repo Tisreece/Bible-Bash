@@ -135,12 +135,17 @@ public class AbilityManager : MonoBehaviour
         Sprite Ability1Icon = null;
         Sprite Ability2Icon = null;
         Sprite Ability3Icon = null;
+
+        bool Ability1Cooldown = false;
+        bool Ability2Cooldown = false;
+        bool Ability3Cooldown = false;
         if (SecondaryScript != null)
         {
             if (SecondaryScript.AbilityIcon != null)
             {
                 Ability1Icon = SecondaryScript.AbilityIcon;
             }
+            Ability1Cooldown = SecondaryScript.UsesCooldown;
         }
         if (Ability1Script != null)
         {
@@ -148,6 +153,7 @@ public class AbilityManager : MonoBehaviour
             {
                 Ability2Icon = Ability1Script.AbilityIcon;
             }
+            Ability2Cooldown = Ability1Script.UsesCooldown;
         }
         if (Ability2Script != null)
         {
@@ -155,7 +161,9 @@ public class AbilityManager : MonoBehaviour
             {
                 Ability3Icon = Ability2Script.AbilityIcon;
             }
+            Ability3Cooldown = Ability2Script.UsesCooldown;
         }
-        HUDManager.AbilityBarSetup(Ability1Icon, Ability2Icon, Ability3Icon);
+        HUDManager.AbilityBarImageSetup(Ability1Icon, Ability2Icon, Ability3Icon);
+        HUDManager.AbilityBarFillSetup(Ability1Cooldown, Ability2Cooldown, Ability3Cooldown);
     }
 }
