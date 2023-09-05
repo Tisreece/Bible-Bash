@@ -11,6 +11,9 @@ public class AbilityMaster : MonoBehaviour
     [HideInInspector] public int AbilitySlotIndex;
 
     [HideInInspector] public bool CanActivate;
+
+    private float CooldownTimer = 0.0f;
+    public bool OnCooldown = false;
     
 
     public Sprite AbilityIcon;
@@ -33,6 +36,23 @@ public class AbilityMaster : MonoBehaviour
         Debug.Log("Ability Activated");
     }
 
+    public virtual IEnumerator StartCooldown(int Cooldown)
+    {
+        CooldownTimer = 0.0f;
+        OnCooldown = true;
+        UpdateIconHUD();
+
+        while (CooldownTimer < Cooldown)
+        {
+            CooldownTimer += Time.deltaTime;
+            float t = Mathf.Clamp01(CooldownTimer / Cooldown);
+            yield return null;
+        }
+
+        OnCooldown = false;
+        UpdateIconHUD();
+    }
+
     public virtual bool CheckCanActivate()
     {
         CanActivate = true;
@@ -42,6 +62,6 @@ public class AbilityMaster : MonoBehaviour
     public virtual void UpdateIconHUD()
     {
         bool Activatable = CheckCanActivate();
-        HUDManager.UpdateAbilityIcon(AbilitySlotIndex, Activatable);
+        HUDManager.UpdateAbilityIcon(AbilitySlotIndex, Activatable, UsesCooldown, Stat.Cooldown);
     }
 }

@@ -9,4 +9,5 @@ public class AbilityStats : ScriptableObject
     public float Speed;
     public float Range;
     public float Radius;
+    public int Cooldown;
 }

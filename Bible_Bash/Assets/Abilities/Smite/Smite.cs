@@ -5,28 +5,7 @@ using UnityEngine;
 public class Smite : AbilityMaster
 {
     [SerializeField] private SmiteZone SmiteZone;
-    [SerializeField] private float Cooldown;
-    private float CooldownTimer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("Smite ability instantiated");
-        CooldownTimer = 0.0f;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void FixedUpdate()
-    {
-        if (!CheckCanActivate())
-        {
-            CooldownTimer -= Time.deltaTime;
-        }
-    }
     public override void Activate()
     {
         if (CheckCanActivate())
@@ -34,8 +13,7 @@ public class Smite : AbilityMaster
             Debug.Log("Smite");
             // call spawning method
             SpawnZone();
-            // start cooldown
-            CooldownTimer = Cooldown;
+            StartCoroutine(StartCooldown(Stat.Cooldown));
         }
         else
         {
@@ -60,16 +38,9 @@ public class Smite : AbilityMaster
     
     public override bool CheckCanActivate()
     {
-        // check that the cooldown timer is <= to 0, set to 0 and return true
-        if (CooldownTimer <= 0.0f)
-        {
-            CooldownTimer = 0.0f;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        bool CheckResult = false;
+        CheckResult = !OnCooldown;
+        return CheckResult;
     }
     private void SetStats(SmiteZone SmiteZone)
     {

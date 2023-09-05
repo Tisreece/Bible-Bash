@@ -16,3 +16,4 @@ MonoBehaviour:
   Speed: 0
   Range: 0
   Radius: 0
+  Cooldown: 2

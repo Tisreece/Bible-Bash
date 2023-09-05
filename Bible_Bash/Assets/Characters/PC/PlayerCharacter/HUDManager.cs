@@ -11,6 +11,14 @@ public class HUDManager : MonoBehaviour
     [HideInInspector] public Canvas AbilityBarCanvas;
     private AbilityBar AbilityBarScript;
 
+    //Handles the AbilityBar Cooldown Coroutines
+    private Coroutine CD1Coroutine;
+    private float CD1ElapsedTime;
+    private Coroutine CD2Coroutine;
+    private float CD2ElapsedTime;
+    private Coroutine CD3Coroutine;
+    private float CD3ElapsedTime;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +32,53 @@ public class HUDManager : MonoBehaviour
     }
 
     //Relates to the Ability Bar
+
+    //Any time an ability may need to change its icon they call this
+    public void UpdateAbilityIcon(int AbilitySlot, bool CanActivate, bool UsesCooldown, int CooldownTime)
+    {
+        if (AbilitySlot == 1)
+        {
+            SetOverlayVisibility(AbilityBarScript.Ability1Overlay, !CanActivate);
+            if (UsesCooldown == true)
+            {
+                
+            }
+        }
+
+        if (AbilitySlot == 2)
+        {
+            SetOverlayVisibility(AbilityBarScript.Ability2Overlay, !CanActivate);
+            if (UsesCooldown == true)
+            {
+
+            }
+        }
+
+        if (AbilitySlot == 3)
+        {
+            SetOverlayVisibility(AbilityBarScript.Ability3Overlay, !CanActivate);
+            if (UsesCooldown == true)
+            {
+                CD3Coroutine = StartCoroutine(CooldownFill(AbilityBarScript.Ability3Overlay, CooldownTime, 3));
+            }
+        }
+    }
+
+    //Ability Cooldown Coroutine
+    private IEnumerator CooldownFill(Image Overlay, int Cooldown, int AbilitySlot)
+    {
+        float ElapsedTime = 0.0f;
+        
+        while (ElapsedTime < Cooldown)
+        {
+            ElapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(ElapsedTime / Cooldown);
+            Overlay.fillAmount = Mathf.Lerp(1, 0, t);
+            yield return null;
+        }
+    }
+
+    //Ability Setup
     public void AbilityBarImageSetup(Sprite A1, Sprite A2, Sprite A3)
     {
         AbilityBarCanvas = Instantiate(AbilityBarToDraw);
@@ -42,6 +97,7 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    //Sets the fill type per ability based on whether they use Cooldowns or not
     public void AbilityBarFillSetup(bool Cooldown1, bool Cooldown2, bool Cooldown3)
     {
         if (Cooldown1 == true)
@@ -72,30 +128,9 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    public void UpdateAbilityIcon(int AbilitySlot, bool CanActivate)
+    private void SetOverlayVisibility(Image Overlay, bool ShouldBeActive)
     {
-        if (AbilitySlot == 1)
-        {
-
-        }
-
-        if (AbilitySlot == 2)
-        {
-            if (CanActivate == true)
-            {
-                AbilityBarScript.Ability2Overlay.enabled = false;
-            }
-
-            else
-            {
-                AbilityBarScript.Ability2Overlay.enabled = true;
-            }
-        }
-
-        if (AbilitySlot == 3)
-        {
-
-        }
+        Overlay.enabled = ShouldBeActive;
     }
 
     private void SetTypeSimple(Image Image)
@@ -107,5 +142,8 @@ public class HUDManager : MonoBehaviour
     {
         Image.type = Image.Type.Filled;
         Image.fillMethod = Image.FillMethod.Radial360;
+        Image.fillOrigin = 2;
+        Debug.Log(Image.fillOrigin);
+        Image.fillClockwise = false;
     }
 }
