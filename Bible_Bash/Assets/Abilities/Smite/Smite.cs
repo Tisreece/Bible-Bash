@@ -6,18 +6,22 @@ public class Smite : AbilityMaster
 {
     [SerializeField] private SmiteZone SmiteZone;
 
+    private void Start()
+    {
+        Debug.Log("Smite ability instantiated");
+    }
     public override void Activate()
     {
         if (CheckCanActivate())
         {
-            Debug.Log("Smite");
-            // call spawning method
+            Debug.Log("Smite Activated");
+
             SpawnZone();
             StartCoroutine(StartCooldown(Stat.Cooldown));
         }
         else
         {
-            Debug.Log("Smite is on cooldown");
+            Debug.Log("Smite cannot be activated");
         }
     }
 

@@ -34,32 +34,35 @@ public class HUDManager : MonoBehaviour
     //Relates to the Ability Bar
 
     //Any time an ability may need to change its icon they call this
-    public void UpdateAbilityIcon(int AbilitySlot, bool CanActivate, bool UsesCooldown, int CooldownTime)
+    public void UpdateAbilityIcon(AbilityMaster Ability)
     {
+        int AbilitySlot = Ability.AbilitySlotIndex;
+        bool CanActivate = Ability.CheckCanActivate();
+
         if (AbilitySlot == 1)
         {
             SetOverlayVisibility(AbilityBarScript.Ability1Overlay, !CanActivate);
-            if (UsesCooldown == true)
+            if (Ability.UsesCooldown == true && Ability.OnCooldown == true)
             {
-                
+                CD1Coroutine = StartCoroutine(CooldownFill(AbilityBarScript.Ability3Overlay, Ability.Stat.Cooldown, AbilitySlot));
             }
         }
 
         if (AbilitySlot == 2)
         {
             SetOverlayVisibility(AbilityBarScript.Ability2Overlay, !CanActivate);
-            if (UsesCooldown == true)
+            if (Ability.UsesCooldown == true && Ability.OnCooldown == true)
             {
-
+                CD2Coroutine = StartCoroutine(CooldownFill(AbilityBarScript.Ability3Overlay, Ability.Stat.Cooldown, AbilitySlot));
             }
         }
 
         if (AbilitySlot == 3)
         {
             SetOverlayVisibility(AbilityBarScript.Ability3Overlay, !CanActivate);
-            if (UsesCooldown == true)
+            if (Ability.UsesCooldown == true && Ability.OnCooldown == true)
             {
-                CD3Coroutine = StartCoroutine(CooldownFill(AbilityBarScript.Ability3Overlay, CooldownTime, 3));
+                CD3Coroutine = StartCoroutine(CooldownFill(AbilityBarScript.Ability3Overlay, Ability.Stat.Cooldown, AbilitySlot));
             }
         }
     }
@@ -68,7 +71,6 @@ public class HUDManager : MonoBehaviour
     private IEnumerator CooldownFill(Image Overlay, int Cooldown, int AbilitySlot)
     {
         float ElapsedTime = 0.0f;
-        
         while (ElapsedTime < Cooldown)
         {
             ElapsedTime += Time.deltaTime;
@@ -76,6 +78,10 @@ public class HUDManager : MonoBehaviour
             Overlay.fillAmount = Mathf.Lerp(1, 0, t);
             yield return null;
         }
+
+        CD1Coroutine = null;
+        CD2Coroutine = null;
+        CD3Coroutine = null;
     }
 
     //Ability Setup
@@ -143,7 +149,6 @@ public class HUDManager : MonoBehaviour
         Image.type = Image.Type.Filled;
         Image.fillMethod = Image.FillMethod.Radial360;
         Image.fillOrigin = 2;
-        Debug.Log(Image.fillOrigin);
         Image.fillClockwise = false;
     }
 }

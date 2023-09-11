@@ -61,7 +61,6 @@ public class AbilityMaster : MonoBehaviour
 
     public virtual void UpdateIconHUD()
     {
-        bool Activatable = CheckCanActivate();
-        HUDManager.UpdateAbilityIcon(AbilitySlotIndex, Activatable, UsesCooldown, Stat.Cooldown);
+        HUDManager.UpdateAbilityIcon(this);
     }
 }

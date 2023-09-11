@@ -30,7 +30,8 @@ public class BibleToss : AbilityMaster
         CanActivate = CheckCanActivate();
         if (CanActivate == true)
         {
-            Debug.Log("BibleTossActivated");
+            Debug.Log("BibleToss Activated");
+
             TargetDirection = FindDirection();
             SpawnBible();
             IsEquipped = false;
@@ -39,7 +40,7 @@ public class BibleToss : AbilityMaster
         }
         else
         {
-            Debug.Log("BibleTossCannotBeActivated");
+            Debug.Log("BibleToss Cannot Be Activated");
         }
         
     }
